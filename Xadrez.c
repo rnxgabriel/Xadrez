@@ -4,65 +4,51 @@
 // Depois de verificar se o índice é igual a 1, retorna "casa" ou "casas"
 char *casaOuCasas(int indice)
 {
-    char *direcoes = indice == 1 ? "casa" : "casas";
-    return direcoes;
+    return indice == 1 ? "casa" : "casas";
 }
 
-// Função que exibe o menu
-// Exibe as opções de menu e solicita a escolha do usuário
+// Função que exibe o menu e retorna a escolha do usuário
 int menu()
 {
     int option;
-    printf("Digite a peça que deseja movimentar \n");
-    printf("1- Torre \n");
-    printf("2- Bispo \n");
-    printf("3- Rainha \n");
+    printf("\nDigite a peça que deseja movimentar\n");
+    printf("1 - Torre\n");
+    printf("2 - Bispo\n");
+    printf("3 - Rainha\n");
     printf("0 - Sair\n");
-
     scanf("%d", &option);
     return option;
 }
 
-/*
-Move-se em linha reta horizontalmente ou verticalmente. Seu programa deverá simular o movimento da Torre cinco casas para a direita.
-*/
-// Função que simula o movimento da Torre
+// Função que simula o movimento da Torre (5 casas para a direita usando for)
 void moveTorre()
+{
+    for (int move = 1; move <= 5; move++)
+    {
+        printf("Direita\n");
+    }
+}
+
+// Função que simula o movimento do Bispo (5 casas na diagonal cima-direita usando while)
+void moveBispo()
+{
+    int move = 1;
+    while (move <= 5)
+    {
+        printf("Cima, Direita\n");
+        move++;
+    }
+}
+
+// Função que simula o movimento da Rainha (8 casas para a esquerda usando do-while)
+void moveRainha()
 {
     int move = 1;
     do
     {
-        printf("Torre movendo-se %d %s para a direita\n", move, casaOuCasas(move));
+        printf("Esquerda\n");
         move++;
-    } while (move < 6);
-}
-
-/*
-Move-se na diagonal. Seu programa deverá simular o movimento do Bispo cinco casas na diagonal para cima e à direita. Para representar a diagonal, você imprimirá a combinação de duas direções a cada casa (ex: "Cima, Direita").
-*/
-// Função que simula o movimento do Bispo
-void moveBispo()
-{
-    for (int move = 1; move < 6; move++)
-    {
-        printf("Bispo movendo-se %d %s para cima\n", move, casaOuCasas(move));
-        printf("Bispo movendo-se %d %s para direita\n", move, casaOuCasas(move));
-        printf("\n");
-    }
-}
-
-/*
-    Move-se em todas as direções. Seu programa deverá simular o movimento da Rainha oito casas para a esquerda.
-*/
-// Função que simula o movimento da Rainha
-void moveRainha()
-{
-    int move = 1;
-    while (move < 9)
-    {
-        printf("Rainha movendo-se %d %s para a esquerda\n", move, casaOuCasas(move));
-        move++;
-    }
+    } while (move <= 8);
 }
 
 int main()
